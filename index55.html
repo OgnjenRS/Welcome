@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link href="https://fonts.googleapis.com/css?family=Lato:100,300,600" rel="stylesheet" type="text/css">
+        <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css">
+        <link type="text/css" rel="stylesheet" href="level2/style1.css">
+        
+        <title>Pig Game</title>
+    </head>
+    <body>
+        
+        <nav class="nav">
+            <a href="index44.html" class="nav-item is-active" active-color="orange">2 Kocke</a>
+            <a href="#" class="nav-item" active-color="green">1 Kocka</a>
+            <span class="nav-indicator"></span>
+          </nav>
+          <div style="color: white;font-size: large;font-weight: 600;text-align: center;padding:20px 0px 20px 0px">
+                <div>RULES:</div> 
+                <div>- The game has 2 players, playing in rounds</div>
+                <div>- In each turn, a player rolls a dice as many times as he whishes. Each result get added to his ROUND score</div>
+                <div>- BUT, if the player rolls a 1, all his ROUND score gets lost. After that, it's the next player's turn</div>
+                <div>- The player can choose to 'Hold', which means that his ROUND score gets added to his GLBAL score. After that, it's the next player's turn</div>
+                <div>- The first player to reach 100 points on GLOBAL score wins the game</div>
+          </div>
+        <div class="wrapper clearfix">
+            <div class="player-0-panel active">
+                <div class="player-name" id="name-0"></div>
+                <div class="player-score" id="score-0"></div>
+                <div class="player-current-box">
+                    <div class="player-current-label">Current</div>
+                    <div class="player-current-score" id="current-0"></div>
+                </div>
+            </div>
+            
+            <div class="player-1-panel">
+                <div class="player-name" id="name-1"></div>
+                <div class="player-score" id="score-1"></div>
+                <div class="player-current-box">
+                    <div class="player-current-label">Current</div>
+                    <div class="player-current-score" id="current-1"></div>
+                </div>
+            </div>
+            
+            <button class="btn-new"><i class="ion-ios-plus-outline"></i>New game</button>
+            <button class="btn-roll"><i class="ion-ios-loop"></i>Roll dice</button>
+            <button class="btn-hold"><i class="ion-ios-download-outline"></i>Hold</button>
+            <input type="text" placeholder="Final Score" class="final-score">
+            <img src="dice-5.png" alt="Dice" class="dice" id="dice-1">
+            
+        </div>
+        <script>
+            const indicator = document.querySelector('.nav-indicator');
+const items = document.querySelectorAll('.nav-item');
+
+function handleIndicator(el) {
+  items.forEach(item => {
+    item.classList.remove('is-active');
+    item.removeAttribute('style');
+  });
+  
+  indicator.style.width = `${el.offsetWidth}px`;
+  indicator.style.left = `${el.offsetLeft}px`;
+  indicator.style.backgroundColor = el.getAttribute('active-color');
+
+  el.classList.add('is-active');
+  el.style.color = el.getAttribute('active-color');
+}
+
+
+items.forEach((item, index) => {
+  item.addEventListener('mouseover', (e) => { handleIndicator(e.target)});
+  item.classList.contains('is-active') && handleIndicator(item);
+});
+        </script>
+        <script src="app1.js"></script>
+    </body>
+</html>
